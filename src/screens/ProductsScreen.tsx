@@ -1,17 +1,66 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
+import { StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
+import { Text } from '../components/Themed';
+import ProductItem from '../components/ProductItem';
+
+import Wine1 from '../../assets/images/wines/1.jpg';
+import Wine2 from '../../assets/images/wines/2.jpg';
+import Wine3 from '../../assets/images/wines/3.jpg';
+
+const items = [
+  {
+    title: 'Banti Sunglose',
+    subtitle: 'Красное сухое, Италия',
+    recommendation: 'Магазин рекомендует',
+    match: '75%',
+    price: {
+      cost: 85000, // в копейкаъ,
+      vendor: 'Лента',
+    },
+    imgSrc: Wine1,
+  },
+  {
+    title: 'Cralita Spongo',
+    subtitle: 'Белое сухое, Новая Зеландия',
+    // recommendation: 'Магазин рекомендует',
+    // match: '75%',
+    price: {
+      cost: 125000, // в копейкаъ,
+      vendor: 'Перекресток',
+    },
+    imgSrc: Wine2,
+  },
+  {
+    title: 'Bio Bio',
+    subtitle: 'Нгристое сухое, Италия',
+    recommendation: 'Выбор блогера Prowince',
+    match: '75%',
+    price: {
+      cost: 11000, // в копейкаъ,
+      vendor: 'SimpleWine',
+    },
+    imgSrc: Wine3,
+  },
+];
 
 export default function ProductsScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <Text style={styles.title}>Фильтры: </Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-    </View>
+
+      <ScrollView
+        style={{
+          height: '100%',
+          paddingTop: 18,
+          paddingLeft: 10,
+          paddingBottom: 18,
+        }}
+      >
+        {items.map((item, i) => (
+          <ProductItem key={i} {...item} />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -24,10 +73,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    paddingTop: 18,
+    paddingLeft: 10,
+    paddingBottom: 18,
   },
 });

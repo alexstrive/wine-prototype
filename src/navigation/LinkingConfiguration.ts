@@ -5,8 +5,12 @@ export default {
   config: {
     screens: {
       Root: {
-        screens: ['Profile', 'Shop'],
+        screens: {
+          Profile: '/Profile',
+          Shop: '/Shop',
+        },
       },
+      Quiz: '/Quiz',
       NotFound: '*',
     },
   },
